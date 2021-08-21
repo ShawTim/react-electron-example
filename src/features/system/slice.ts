@@ -5,6 +5,7 @@ import { checkDatabase as checkDatabaseAPI, initDatabase as initDatabaseAPI, log
 export type UserState = {
   hasInit: Boolean;
   hasLogin: Boolean;
+  initFailed: Boolean;
   loginFailed: Boolean;
   dataCorrupted: Boolean;
   secret: string;
@@ -13,6 +14,7 @@ export type UserState = {
 const initialState: UserState = {
   hasInit: false,
   hasLogin: false,
+  initFailed: false,
   loginFailed: false,
   dataCorrupted: false,
   secret: "",
@@ -57,22 +59,27 @@ export const systemSlice = createSlice({
     .addCase(login.fulfilled, (state, action) => {
       const success = action.payload;
       state.hasLogin = success;
+      state.initFailed = false;
       state.loginFailed = !success;
       state.dataCorrupted = false;
       if (success) {
         state.secret = action.meta.arg;
       }
     })
+    .addCase(initDatabase.rejected, (state, action) => {
+      state.hasInit = false;
+      state.initFailed = true;
+    })
     .addCase(getContacts.rejected, (state, action) => {
-      state.dataCorrupted = !!action.meta.arg.secret // fail to load contacts with secret = data corrupted
+      state.dataCorrupted = !!action.meta.arg.secret; // fail to load contacts with secret = data corrupted
       state.hasLogin = false;
     })
     .addCase(saveContact.rejected, (state, action) => {
-      state.dataCorrupted = !!action.meta.arg.secret // fail to save contacts with secret = data corrupted
+      state.dataCorrupted = !!action.meta.arg.secret; // fail to save contacts with secret = data corrupted
       state.hasLogin = false;
     })
     .addCase(deleteContact.rejected, (state, action) => {
-      state.dataCorrupted = !!action.meta.arg.secret // fail to delete contacts with secret = data corrupted
+      state.dataCorrupted = !!action.meta.arg.secret; // fail to delete contacts with secret = data corrupted
       state.hasLogin = false;
     })
 });

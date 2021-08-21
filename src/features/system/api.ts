@@ -4,8 +4,14 @@ import { defaultContacts } from '../../datastore.config';
 
 export const checkDatabase = async (): Promise<Boolean> => await checkDatabaseExist();
 
-export const initDatabase = async (password: string): Promise<void> =>
-  storeContacts(defaultContacts.map((contact) => ({ ...contact, id: uuidv4() })), password);
+export const initDatabase = async (password: string): Promise<void> => {
+  try {
+    await storeContacts(defaultContacts.map((contact) => ({ ...contact, id: uuidv4() })), password);
+  } catch (e) {
+    throw e;
+  }
+}
+  
 
 export const login = async (password: string): Promise<Boolean> => {
   try {

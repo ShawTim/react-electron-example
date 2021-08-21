@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
-import { InputGroup, FormControl, Button, Col, Container, Row } from 'react-bootstrap';
+import { InputGroup, FormControl, Button, Col, Container, Row, Alert } from 'react-bootstrap';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { initDatabase } from '../../features/system/slice';
@@ -9,7 +9,7 @@ declare const window: any;
 
 const InitPage = () => {
   const dispatch = useAppDispatch();
-  const { hasInit, hasLogin } = useAppSelector((state) => state.system);
+  const { hasInit, hasLogin, initFailed } = useAppSelector((state) => state.system);
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
@@ -46,6 +46,7 @@ const InitPage = () => {
       </Row>
       <Row className="justify-content-center">
         <Col xs={12} sm={8} md={6}>
+          <Alert show={!!initFailed} variant="danger">Setup failed. Cannot initialize the data file (check permission?).</Alert>
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="password-desc">

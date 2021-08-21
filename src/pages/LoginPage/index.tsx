@@ -13,7 +13,6 @@ const LoginPage = () => {
   const onPasswordChange = useCallback((ev: React.ChangeEvent<HTMLInputElement>) => setPassword(ev.target.value), []);
   const onLoginBtnClick = useCallback(() => dispatch(login(password)), [password, dispatch]);
   const onCloseBtnClick = useCallback(() => window.close(), []);
-  console.log("dataCorrupted", dataCorrupted);
 
   // app not yet init, go to init page
   if (!hasInit) {

@@ -8,10 +8,6 @@
   "devDependencies": {
     "@babel/core": "7.12.3",
     "@electron-forge/cli": "^6.0.0-beta.59",
-    "@electron-forge/maker-deb": "^6.0.0-beta.59",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.59",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
-    "@electron-forge/maker-zip": "^6.0.0-beta.59",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@svgr/webpack": "5.5.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -113,14 +109,14 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && rm -rf docs && cp -r build docs",
     "test": "node scripts/test.js",
     "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
     "electron": "wait-on tcp:3000 && electron-forge start",
-    "package": "node scripts/build.js && electron-forge package",
-    "make": "node scripts/build.js && electron-forge make",
     "build:github": "PUBLIC_URL=/react-electron-example node scripts/build.js && rm -rf docs && cp -r build docs",
-    "build:linux": "PUBLIC_URL=./ node scripts/build.js && electron-builder build -l"
+    "build:linux": "PUBLIC_URL=./ node scripts/build.js && electron-builder build -l",
+    "build:window": "PUBLIC_URL=./ node scripts/build.js && electron-builder build -w",
+    "build:mac": "PUBLIC_URL=./ node scripts/build.js && electron-builder build -m",
+    "build:all": "PUBLIC_URL=./ node scripts/build.js && electron-builder build -mwl"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -193,37 +189,6 @@
     "presets": [
       "react-app"
     ]
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "name": "react-electron-example",
-        "executableName": "react-electron-example"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "react_electron_example"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin",
-            "linux"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
   },
   "build": {
     "appId": "com.shwatim.react-electron-example",
