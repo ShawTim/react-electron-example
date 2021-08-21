@@ -9,7 +9,7 @@ export const initDatabase = async (password: string): Promise<void> =>
 
 export const login = async (password: string): Promise<Boolean> => {
   try {
-    loadContacts(password);
+    await loadContacts(password);
     return true;  
   } catch (e) {
     // wrong password for decrypt, or fail to parse the decrypted JSON

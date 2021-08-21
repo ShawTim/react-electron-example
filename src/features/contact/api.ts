@@ -6,6 +6,9 @@ export const getContacts = async (secret: string): Promise<Array<Contact>> => {
   try {
     return await loadContacts(secret);
   } catch (e) {
+    if (!!secret) {
+      console.error(e);
+    }
     throw e;
   }
 };
@@ -26,6 +29,9 @@ export const saveContact = async (contact: Contact | ContactContent, secret: str
       return newContact;
     }
   } catch (e) {
+    if (!!secret) {
+      console.error(e);
+    }
     throw e;
   }
 };
@@ -36,6 +42,9 @@ export const deleteContact = async (contact: Contact, secret: string): Promise<v
     const newContacts = contacts.filter((c) => c.id !== contact.id);
     await storeContacts(newContacts, secret);
   } catch (e) {
+    if (!!secret) {
+      console.error(e);
+    }
     throw e;
   }
 };

@@ -46,7 +46,6 @@ export const loadContacts = async (secret: string): Promise<Contact[]> => {
       return (JSON.parse(str) as Contact[]);
     }
   } catch (e) {
-    console.error(e);
     throw e;
   }
 };
@@ -61,7 +60,6 @@ export const storeContacts = async (contacts: Contact[], secret: string): Promis
       sessionStorage.setItem("contacts", encrypt(JSON.stringify(contacts), secret));
     }
   } catch (e) {
-    console.error(e);
     throw e;
   }
 };
