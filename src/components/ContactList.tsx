@@ -16,7 +16,6 @@ const highlight = (str: string, search: string) => {
     const matched = str.match(regexp);
     return tokens.map((token, i) => {
       const match = i > 0 ? <mark className="p-0">{matched?.[i-1] ?? ""}</mark> : "";
-      console.log(match, token, matched);
       return (<React.Fragment key={`token-${token}-${i}`}>{match}{token}</React.Fragment>);
     });
   } else {

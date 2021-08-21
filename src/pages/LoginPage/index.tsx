@@ -7,12 +7,13 @@ import { login } from '../../features/system/slice';
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
-  const { hasInit, hasLogin, loginFailed } = useAppSelector((state) => state.system);
+  const { hasInit, hasLogin, loginFailed, dataCorrupted } = useAppSelector((state) => state.system);
   const [password, setPassword] = useState<string>("");
 
   const onPasswordChange = useCallback((ev: React.ChangeEvent<HTMLInputElement>) => setPassword(ev.target.value), []);
   const onLoginBtnClick = useCallback(() => dispatch(login(password)), [password, dispatch]);
   const onCloseBtnClick = useCallback(() => window.close(), []);
+  console.log("dataCorrupted", dataCorrupted);
 
   // app not yet init, go to init page
   if (!hasInit) {
@@ -38,7 +39,10 @@ const LoginPage = () => {
       </Row>
       <Row className="justify-content-center">
         <Col xs={12} sm={8} md={6}>
-          <Alert show={!!loginFailed} variant="danger">Password mismatch. Failed to open the application.</Alert>
+          <Alert show={!!loginFailed || !!dataCorrupted} variant="danger">
+            {!!loginFailed && "Password mismatch. Failed to open the application."}
+            {!!dataCorrupted && "Data Corrupted. Failed to access the data by given password."}
+          </Alert>
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="password-desc">

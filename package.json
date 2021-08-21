@@ -2,7 +2,9 @@
   "name": "react-electron-example",
   "version": "0.1.0",
   "private": true,
-  "main": "public/electron.js",
+  "main": "electron.js",
+  "description": "Simple Secure Contact Manager",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.12.3",
     "@electron-forge/cli": "^6.0.0-beta.59",
@@ -35,7 +37,7 @@
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "concurrently": "^6.2.1",
     "electron": "^13.1.9",
-    "electron-is-dev": "^2.0.0",
+    "electron-builder": "^22.11.7",
     "electron-renderer": "^2.0.4",
     "eslint": "^7.11.0",
     "eslint-config-react-app": "^6.0.0",
@@ -84,6 +86,7 @@
     "css-loader": "4.3.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
+    "electron-is-dev": "^2.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "email-validator": "^2.0.4",
     "fs-extra": "^9.0.1",
@@ -115,7 +118,9 @@
     "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
     "electron": "wait-on tcp:3000 && electron-forge start",
     "package": "node scripts/build.js && electron-forge package",
-    "make": "node scripts/build.js && electron-forge make"
+    "make": "node scripts/build.js && electron-forge make",
+    "build:github": "PUBLIC_URL=/react-electron-example node scripts/build.js && rm -rf docs && cp -r build docs",
+    "build:linux": "PUBLIC_URL=./ node scripts/build.js && electron-builder build -l"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -191,7 +196,10 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "name": "react-electron-example",
+        "executableName": "react-electron-example"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -202,7 +210,8 @@
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
+            "darwin",
+            "linux"
           ]
         },
         {
@@ -214,6 +223,24 @@
           "config": {}
         }
       ]
+    }
+  },
+  "build": {
+    "appId": "com.shwatim.react-electron-example",
+    "productName": "Simple Secure Contact Manager",
+    "copyright": "Copyright © year ShawTim",
+    "files": [
+      "./build/**/*",
+      "electron.js"
+    ],
+    "directories": {
+      "app": "."
+    },
+    "win": {
+      "target": "portable"
+    },
+    "linux": {
+      "target": "AppImage"
     }
   }
 }

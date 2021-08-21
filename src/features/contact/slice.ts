@@ -27,22 +27,34 @@ const initialState: ContactState = {
 export const getContacts = createAsyncThunk(
   'contact/get',
   async ({ secret }: { secret: string }) => {
-    const contacts = await getContactsAPI(secret);
-    return contacts;
+    try {
+      const contacts = await getContactsAPI(secret);
+      return contacts;
+    } catch (e) {
+      throw e;
+    }
   }
 );
 export const saveContact = createAsyncThunk(
   'contact/save',
   async ({ contact, secret } : { contact: Contact | ContactContent, secret: string }) => {
-    const newContact = await saveContactAPI(contact, secret);
-    return newContact;
+    try {
+      const newContact = await saveContactAPI(contact, secret);
+      return newContact;
+    } catch (e) {
+      throw e;
+    }
   }
 );
 export const deleteContact = createAsyncThunk(
   'contact/delete',
   async ({ contact, secret } : { contact: Contact, secret: string }) => {
-    await deleteContactAPI(contact, secret);
-    return contact;
+    try {
+      await deleteContactAPI(contact, secret);
+      return contact;
+    } catch (e) {
+      throw e;
+    }
   }
 );
 
