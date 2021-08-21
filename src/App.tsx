@@ -1,57 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useEffect } from 'react';
+import { ConnectedRouter } from 'connected-react-router';
+import { Route, Switch } from 'react-router';
 
-function App() {
+import { history } from './app/store';
+import ContactPage from './pages/ContactPage';
+import LoginPage from './pages/LoginPage';
+import InitPage from './pages/InitPage';
+
+import './App.scss';
+import { useAppDispatch } from './app/hooks';
+import { checkDatabase } from './features/system/slice';
+
+const App = () => {
+  const dispatch = useAppDispatch();
+
+  // when app load, check the database status and see whether it needs to initialize
+  useEffect(() => {
+    dispatch(checkDatabase());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route path={["/contacts/view/:id", "/contacts/create", "/contacts"]} render={() => <ContactPage />} />
+        <Route path="/login" render={() => <LoginPage />} />
+        <Route path="/" render={() => <InitPage />} />
+      </Switch>
+    </ConnectedRouter>
   );
 }
 

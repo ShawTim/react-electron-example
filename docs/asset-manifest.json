@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-electron-example/static/css/main.c05a5527.chunk.css",
+    "main.js": "/react-electron-example/static/js/main.3a60ba2e.chunk.js",
+    "main.js.map": "/react-electron-example/static/js/main.3a60ba2e.chunk.js.map",
+    "runtime-main.js": "/react-electron-example/static/js/runtime-main.d692330e.js",
+    "runtime-main.js.map": "/react-electron-example/static/js/runtime-main.d692330e.js.map",
+    "static/css/2.a1c0ed8d.chunk.css": "/react-electron-example/static/css/2.a1c0ed8d.chunk.css",
+    "static/js/2.44700964.chunk.js": "/react-electron-example/static/js/2.44700964.chunk.js",
+    "static/js/2.44700964.chunk.js.map": "/react-electron-example/static/js/2.44700964.chunk.js.map",
+    "index.html": "/react-electron-example/index.html",
+    "static/css/2.a1c0ed8d.chunk.css.map": "/react-electron-example/static/css/2.a1c0ed8d.chunk.css.map",
+    "static/css/main.c05a5527.chunk.css.map": "/react-electron-example/static/css/main.c05a5527.chunk.css.map",
+    "static/js/2.44700964.chunk.js.LICENSE.txt": "/react-electron-example/static/js/2.44700964.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/react-electron-example/static/media/bootstrap-icons.dfd0ea12.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d692330e.js",
+    "static/css/2.a1c0ed8d.chunk.css",
+    "static/js/2.44700964.chunk.js",
+    "static/css/main.c05a5527.chunk.css",
+    "static/js/main.3a60ba2e.chunk.js"
+  ]
+}
