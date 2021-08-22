@@ -126,53 +126,68 @@ The confiugration file is `src/datastore.config.ts`. You can have 2 configuratio
 ---
 ### UI flow
 It firstly comes with an initialization page. It requires you to provide a password for the secure contacts. You need to provide a password match to enable the "Setup" button.
-![image](https://user-images.githubusercontent.com/85455/130353586-5271b585-cb0f-4492-bb0c-532d32b8c590.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130353586-5271b585-cb0f-4492-bb0c-532d32b8c590.png" height="300">
 
 Once initialized you will be redirected to the contact view. You will see some default contacts being injected. You can configure `defaultContacts` for the default contacts.
-![image](https://user-images.githubusercontent.com/85455/130353852-b8389bc6-e056-47fa-b025-9742765a7131.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130353852-b8389bc6-e056-47fa-b025-9742765a7131.png" height="300">
 
 Once it's setup, when you relaunch the application, you are required to input the password you just provided.
-![image](https://user-images.githubusercontent.com/85455/130353794-b2fd5072-342b-4e06-8bdf-39481860aea8.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130353794-b2fd5072-342b-4e06-8bdf-39481860aea8.png" height="300">
 
 You can search/filter the contacts through the search field. If there is no matches, it will say no matches.
-![image](https://user-images.githubusercontent.com/85455/130353930-df834fca-9abf-4ac2-acf6-9b90ddb509bf.png)
-![image](https://user-images.githubusercontent.com/85455/130353964-4220082b-455a-4137-86dc-a549db6e52a0.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130353930-df834fca-9abf-4ac2-acf6-9b90ddb509bf.png" height="300">
+<img src="https://user-images.githubusercontent.com/85455/130353964-4220082b-455a-4137-86dc-a549db6e52a0.png" height="300">
 
 Select a contact will open the contact detail for you.
-![image](https://user-images.githubusercontent.com/85455/130353994-fa83fcec-96ba-451b-b594-30987b2532a7.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130353994-fa83fcec-96ba-451b-b594-30987b2532a7.png" height="300">
 
 You can close the contact detail by clicking "Close" button, or edit the contact by clicking "Edit" button.
-![image](https://user-images.githubusercontent.com/85455/130354034-6f8c2000-eb95-43d2-a213-ce2712914aac.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130354034-6f8c2000-eb95-43d2-a213-ce2712914aac.png" height="300">
 
 Edit the contact and then save, the changes will be applied immediately, encrypt and then save to the data file.
-![image](https://user-images.githubusercontent.com/85455/130354102-0796c490-2ced-4acd-b509-9ebb19b26f17.png)
-![image](https://user-images.githubusercontent.com/85455/130354121-944871aa-07a8-4d1d-94ca-9493558b2992.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130354102-0796c490-2ced-4acd-b509-9ebb19b26f17.png" height="300">
+<img src="https://user-images.githubusercontent.com/85455/130354121-944871aa-07a8-4d1d-94ca-9493558b2992.png" height="300">
 
 You can click the "Create" button on the top of the contact list to open a create form to create a new contact.
-![image](https://user-images.githubusercontent.com/85455/130354204-bf5a78c6-3899-4a97-9adc-08bc52d06c1b.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130354204-bf5a78c6-3899-4a97-9adc-08bc52d06c1b.png" height="300">
 
 Once save it will be encrypted and store to data file immediately. And you can open the newly created contact to verify.
-![image](https://user-images.githubusercontent.com/85455/130354236-61bbb7a5-9439-4fda-98b4-400bdc63f02e.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130354236-61bbb7a5-9439-4fda-98b4-400bdc63f02e.png" height="300">
 
 ---
 ### Error handling and validation
 Password should be matched when initializing
-![image](https://user-images.githubusercontent.com/85455/130353755-3e373afb-7856-4293-9096-ce50641c3d05.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130353755-3e373afb-7856-4293-9096-ce50641c3d05.png" height="300">
 
 Login with a wrong password
-![image](https://user-images.githubusercontent.com/85455/130353828-28b53876-c93c-47a4-a80a-0934eea4eb80.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130353828-28b53876-c93c-47a4-a80a-0934eea4eb80.png" height="300">
 
 Invalid email
-![image](https://user-images.githubusercontent.com/85455/130354052-37d42681-046a-4ee3-b6b3-8494cc4785d4.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130354052-37d42681-046a-4ee3-b6b3-8494cc4785d4.png" height="300">
 
 Some fields are empty, unable to click the "Save" button to continue
-![image](https://user-images.githubusercontent.com/85455/130354268-46ea5668-3c38-4bc7-8d31-07abdbefc30c.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130354268-46ea5668-3c38-4bc7-8d31-07abdbefc30c.png" height="300">
 
 Data corrupted. This happens when you login the application already, and then manually edit the data file with some content that are not able to be decrypted with the given password
-![image](https://user-images.githubusercontent.com/85455/130354314-000ed636-dfc2-4e6f-b5a9-3d6439755736.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130354314-000ed636-dfc2-4e6f-b5a9-3d6439755736.png" height="300">
 
 Failed to initialize. This happen when you fail to create the data file, mostly because you don't have permission to create file on the provided path
-![image](https://user-images.githubusercontent.com/85455/130354433-cab5183a-3332-4efa-837a-02d8bb640443.png)
+
+<img src="https://user-images.githubusercontent.com/85455/130354433-cab5183a-3332-4efa-837a-02d8bb640443.png" height="300">
 
 ---
 ### Roadmap
