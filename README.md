@@ -13,8 +13,6 @@ The application will be able to be built as an executable Electron app without i
 - Electron app: encrypted data store in disk, with configurable path during build time
 - [Web application](https://shawtim.github.io/react-electron-example/): for demo purpose, encrypted data store in sessionStorage. When user close the session the data will be gone
 
-**NOTE: For Windows build, the default data file will be stored at somewhere like `C:\Users\{USER}\AppData\Local\Temp\{APP_NAME}\contacts.data` but not next to the executable. The path will be different when you open the application next time and thus the application will looks like "data loss" but it's not decause for Windows it's 2 different application running in 2 different context. To avoid this on Windows, specify `datastorePath` in `datastore.config.ts` to an absolute path. See Configuration for details.**
-
 ## Overview
 ### Tech Stack
 #### React+Redux (Web application framework)
@@ -118,6 +116,9 @@ For linux/windows build, there are 2 scripts available to get use of docker such
 ```
 ./docker-build-window.sh
 ```
+---
+### Windows build
+For Windows build, the default data file will be stored at somewhere like `C:\Users\{USER}\AppData\Local\Temp\{APP_NAME}\contacts.data` but not next to the executable. The path will be different when you open the application next time and thus the application will looks like "data loss" but it's not decause for Windows it's 2 different application running in 2 different context. To avoid this on Windows, specify `datastorePath` in `datastore.config.ts` to an absolute path like `C:\\Users\\{USER}\\Downloads\\contacts.data`. See Configuration for details.
 ---
 ### Configuration
 The confiugration file is `src/datastore.config.ts`. You can have 2 configuration options:
