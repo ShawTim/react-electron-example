@@ -16,11 +16,11 @@ The application will be able to be built as an executable Electron app without i
 ## Overview
 ### Tech Stack
 #### React+Redux (Web application framework)
-Electron is developed by web technology which basically a web application (with node.js access) bundled as a desktop application. It can be started with [plenty of boilerplate](https://www.electronjs.org/docs/tutorial/boilerplates-and-clis), [Electron CLI](https://www.electronjs.org/docs/tutorial/boilerplates-and-clis), or build from a web application with Electron.
+Electron is developed in web technology which basically a web application (with node.js access) bundled as a desktop application. It can be started with [plenty of boilerplate](https://www.electronjs.org/docs/tutorial/boilerplates-and-clis), [Electron CLI](https://www.electronjs.org/docs/tutorial/boilerplates-and-clis), or build from a web application with Electron.
 
 In this project I pick the latter one, which start with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 ```
- $ npx create-react-app react-demo-app --template redux-typescript
+npx create-react-app react-demo-app --template redux-typescript
 ```
 
 The template will come with redux [slice pattern](https://redux.js.org/faq/code-structure#what-should-my-file-structure-look-like-how-should-i-group-my-action-creators-and-reducers-in-my-project-where-should-my-selectors-go).
@@ -29,9 +29,9 @@ The template will come with redux [slice pattern](https://redux.js.org/faq/code-
 Based on the web application, I follow the [tutorial here](https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e) to add Electron functionality and then convert the project to use [electron-forge](https://www.electronforge.io/) to run the web application as an Electron app.
 
 #### electron-builder (Electron CLI)
-While electron-forge is good, it can build the electron installation package as well, but are you sure you want to access the app through installation?
+While electron-forge is good, it can build the electron installation package (.rpm, .deb) as well, but are you sure you want to install the app?
 
-When I want to build executables without installation, I am quite frustrated on electron-forge. Instead, [electron-builder](https://github.com/electron-userland/electron-builder) works like a charm without annoying configuration and with docker environment provided. For example I can simply build the Electron app as an [AppImage](https://appimage.org/) app. Maybe I should use it in the first place for development.
+When I want to build executables without installation, I am quite frustrated on electron-forge. Instead, [electron-builder](https://github.com/electron-userland/electron-builder) works like a charm without annoying configuration and with docker environment provided. I can simply build the Electron app as an [AppImage](https://appimage.org/) app. Maybe I should use it in the first place for development.
 
 #### react-router (React modules for handling navigation)
 React applications are commonly built as a SPA (Single Page Application) with URL dynamically rewriting. [react-router](https://reactrouter.com/) is essential and also [connected-react-router](https://github.com/supasate/connected-react-router) for Redux binding with react-router.
@@ -43,7 +43,7 @@ Handy, simple and light UI framework for supporting responsive web and a11y. [re
 
 [bootstrap-icons](https://icons.getbootstrap.com/) is also used.
 
-Dont get me wrong - not a fan though. I use Material-UI quite heavily on other projects. It just depends on the scenario.
+Dont get me wrong - not a fan of bootstrap though. I use Material-UI quite heavily on other projects. It just depends on the scenario.
 
 #### jest (testing)
 [jest](https://jestjs.io/) comes with CRA (Create React App) for unit testing. It also provides test converage report.
@@ -55,12 +55,12 @@ Dont get me wrong - not a fan though. I use Material-UI quite heavily on other p
 [webpack](https://webpack.js.org/) comes with CRA (Create React App) for bunlding. Also [babel](https://babeljs.io/) and other webpack plugins. You may refer to `package.json` for detail.
 
 #### bcryptjs (password salted hashing) (not in use)
-I thought I need to store the salted hashed password to somewhere but later on I found that I dont actually need it (see the encryption part). But still want to share.
+I thought I need to store the salted hashed password to somewhere but later on I found that the project doesnt actually need it (see the encryption part). But still worth to share.
 
 [bcrypt](https://www.npmjs.com/package/bcrypt) is good and promising, but it requires nodejs to run (and maybe some other dependency as well). [bcryptjs](https://www.npmjs.com/package/bcryptjs) should be a good alternative because it runs on browser as well since it's pure JS, although it's slower.
 
 #### crypto-js (encryption)
-The application requires an encryption library to encrypt/decrypt the data. The data will only be used by this application and wont be passed around to another consumer. User is required to provide a password, which is actually the secrey key. So AES should be a good choice, which is a symmetric encryption with 1 single secret key to encrypt and decrypt.
+The application requires an encryption library to encrypt/decrypt the data. The data will only be used by this application and wont be passed around to another consumer. User is required to provide a password, which is actually the secret key. So AES should be a good choice, which is a symmetric encryption with 1 single secret key to encrypt and decrypt.
 
 I pick [crypto-js](https://www.npmjs.com/package/crypto-js), which runs on both nodejs and browser (at least for AES). Some other encryption implementation requires nodejs or C++ which are not available on browser.
 
@@ -123,7 +123,7 @@ For Windows build, the default data file will be stored at somewhere like `C:\\U
 ---
 ### Configuration
 The confiugration file is `src/datastore.config.ts`. You can have 2 configuration options:
-- `datastorePath`: the file path for the encrypted data file to be stored, default is `./contacts.data`. On Linux that will be next to the application, on Windows it will be located at somewhere like `C:\Users\{USER}\AppData\Local\Temp\{APP_NAME}\contacts.data`
+- `datastorePath`: the file path for the encrypted data file to be stored, default is `./contacts.data`. On Linux that will be next to the application, on Windows it will be located at somewhere like `C:\\Users\\{USER}\\AppData\\Local\\Temp\\{APP_NAME}\\contacts.data`
 - `defaultContacts`: this is an array of contact data that will be pumped into the data file when the application initialized such that the user can play around with some data instead of nth. The data is generated, not real-life data.
 
 ---
