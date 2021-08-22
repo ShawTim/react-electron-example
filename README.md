@@ -118,12 +118,14 @@ For linux/windows build, there are 2 scripts available to get use of docker such
 ```
 ---
 ### Windows build
-For Windows build, the default data file will be stored at somewhere like `C:\Users\{USER}\AppData\Local\Temp\{APP_NAME}\contacts.data` but not next to the executable. The path will be different when you open the application next time and thus the application will looks like "data loss" but it's not decause for Windows it's 2 different application running in 2 different context. To avoid this on Windows, specify `datastorePath` in `datastore.config.ts` to an absolute path like `C:\\Users\\{USER}\\Downloads\\contacts.data`. See Configuration for details.
+For Windows build, the default data file will be stored at somewhere like `C:\\Users\\{USER}\\AppData\\Local\\Temp\\{APP_NAME}\\contacts.data` but not next to the executable. The path will be different when you open the application next time and thus the application will looks like "data loss" but it's not decause for Windows it's 2 different application running in 2 different context. To avoid this on Windows, specify `datastorePath` in `datastore.config.ts` to an absolute path like `C:\\Users\\{USER}\\Downloads\\contacts.data`. See Configuration for details.
+
 ---
 ### Configuration
 The confiugration file is `src/datastore.config.ts`. You can have 2 configuration options:
 - `datastorePath`: the file path for the encrypted data file to be stored, default is `./contacts.data`. On Linux that will be next to the application, on Windows it will be located at somewhere like `C:\Users\{USER}\AppData\Local\Temp\{APP_NAME}\contacts.data`
 - `defaultContacts`: this is an array of contact data that will be pumped into the data file when the application initialized such that the user can play around with some data instead of nth. The data is generated, not real-life data.
+
 ---
 ### UI flow
 It firstly comes with an initialization page. It requires you to provide a password for the secure contacts. You need to provide a password match to enable the "Setup" button.
