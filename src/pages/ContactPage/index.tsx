@@ -52,7 +52,7 @@ const ContactPage = () => {
   return (
     <Container fluid className="h-100 border rounded">
       <Row className="h-100">
-        <Col xs={4} className="h-100 p-0 border-end">
+        <Col xs={4} className="h-100 p-0 border-end overflow-auto">
           <ContactList contacts={contacts} onSelect={onSelectContact} onCreate={onCreateContact} />
         </Col>
         <Col xs={8} className="h-100 p-0">

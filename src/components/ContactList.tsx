@@ -80,7 +80,7 @@ const ContactList = (props: ContactListProps) => {
           )}
         </ListGroup>
       ) : (
-        <div className="h-100 d-flex justify-content-center align-items-center">{!!search ? "No Matched Contacts." : "No Contacts."}</div>
+        <div className="h-75 d-flex justify-content-center align-items-center">{!!search ? "No Matched Contacts." : "No Contacts."}</div>
       )}
     </>
   );
