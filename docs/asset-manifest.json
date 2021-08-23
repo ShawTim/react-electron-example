@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-electron-example/static/css/main.c05a5527.chunk.css",
-    "main.js": "/react-electron-example/static/js/main.c474b929.chunk.js",
-    "main.js.map": "/react-electron-example/static/js/main.c474b929.chunk.js.map",
+    "main.js": "/react-electron-example/static/js/main.92a34a93.chunk.js",
+    "main.js.map": "/react-electron-example/static/js/main.92a34a93.chunk.js.map",
     "runtime-main.js": "/react-electron-example/static/js/runtime-main.d692330e.js",
     "runtime-main.js.map": "/react-electron-example/static/js/runtime-main.d692330e.js.map",
     "static/css/2.a1c0ed8d.chunk.css": "/react-electron-example/static/css/2.a1c0ed8d.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.a1c0ed8d.chunk.css",
     "static/js/2.44700964.chunk.js",
     "static/css/main.c05a5527.chunk.css",
-    "static/js/main.c474b929.chunk.js"
+    "static/js/main.92a34a93.chunk.js"
   ]
 }
